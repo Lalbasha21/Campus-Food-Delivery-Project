@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><h2>🍽️ MRCET Food Delivery Club</h2></li>
+      <li class="right"><a href="cart.html" class="btn-link">🛒 Cart</a></li>
+      <li class="right"><a href="home.html" class="btn-link">🏠 Home</a></li>
+      <li class="right"><button onclick="logout()">Logout</button></li>
+    </ul>
+  </nav>
+
+  <h1>Your Cart</h1>
+
+  <div class="cart-items" id="cartContainer">
+    <!-- Cart items will be injected here -->
+  </div>
+
+  <div style="text-align:center;">
+    <button onclick="placeOrder()">Place Order</button>
+  </div>
+
+  <script>
+    const cartContainer = document.getElementById("cartContainer");
+
+    function renderCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      cartContainer.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p style='text-align:center;'>Your cart is empty.</p>";
+        return;
+      }
+
+      cart.forEach((item, index) => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <p><b>${item.itemName}</b></p>
+          <p>Price: ₹${item.price}</p>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartContainer.appendChild(div);
+      });
+    }
+
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      renderCart();
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      localStorage.removeItem("cart");
+      window.location.href = "index.html";
+    }
+
+    function placeOrder() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+     
+      localStorage.removeItem("cart");
+      renderCart();
+    }
+
+    // Prevent access without login
+    if (!localStorage.getItem("loggedInUser")) {
+      window.location.href = "index.html";
+    }
+
+    // Load cart on page load
+    renderCart();
+  </script>
+
+</body>
+</html>
