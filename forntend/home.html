@@ -1,66 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MRCET Food Delivery</title>
-  <link rel="stylesheet" href="home.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRCET Food Delivery</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><h2>🍽️ MRCET Food Delivery Club</h2></li>
+        <li class="right"><a href="cart.html" class="btn-link">🛒 Cart</a></li>
+        <li class="right"><button onclick="logout()">Logout</button></li>
+      </ul>
+    </nav>
 
-  <nav>
-    <ul>
-      <li><h2>🍽️ MRCET Food Delivery Club</h2></li>
-      <li class="right"><a href="cart.html" class="btn-link">🛒 Cart</a></li>
-      <li class="right"><button onclick="logout()">Logout</button></li>
-    </ul>
-  </nav>
+    <h1>Available Dishes</h1>
 
-  <h1>Available Dishes</h1>
+    <div class="dishes">
+      <div class="card">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/960px-Hyderabadi_Chicken_Biryani.jpg"
+          alt="Chicken Biryani"
+        />
+        <p><b>Hyderabadi Chicken Biryani</b></p>
+        <p>Rating: 4.5</p>
+        <p>Price: ₹100</p>
+        <button
+          onclick="addToCart('Chicken Biryani', 100,'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/960px-Hyderabadi_Chicken_Biryani.jpg')"
+        >
+          Add to Cart
+        </button>
+      </div>
 
-  <div class="dishes">
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Hyderabadi_Chicken_Biryani.jpg/960px-Hyderabadi_Chicken_Biryani.jpg" alt="Chicken Biryani" />
-      <p><b>Hyderabadi Chicken Biryani</b></p>
-      <p>Rating: 4.5</p>
-      <p>Price: ₹100</p>
-      <button onclick="addToCart('Chicken Biryani', 100)">Add to Cart</button>
+      <div class="card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCykeGoz-nzx5yd1XFT1Vi1GYXas_WFLPyqA&s"
+          alt="Paneer Tikka"
+        />
+        <p><b>Paneer Tikka</b></p>
+        <p>Rating: 4.2</p>
+        <p>Price: ₹80</p>
+        <button
+          onclick="addToCart('Paneer Tikka', 80,'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCykeGoz-nzx5yd1XFT1Vi1GYXas_WFLPyqA&s')"
+        >
+          Add to Cart
+        </button>
+      </div>
+      <div class="card">
+        <div class="img-container">
+          <img
+            src="https://i.ytimg.com/vi/7dLE0oraTF0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBw9lgGUqANLQvwbgqtoKK-U1Cuig"
+            alt="Mutton Biryani"
+          />
+        </div>
+        <p><b>Hyderabadi Mutton Biryani</b></p>
+        <p>Rating: 4.7</p>
+        <p>Price: ₹120</p>
+        <button
+          onclick="addToCart('Mutton Biryani', 120,'https://i.ytimg.com/vi/7dLE0oraTF0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBw9lgGUqANLQvwbgqtoKK-U1Cuig')"
+        >
+          Add to Cart
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="https://product-assets.faasos.io/eatsure/production/veg-biryani-online.jpeg"
+          alt="Vegetable Biryani"
+        />
+        <p><b>Hyderabadi Vegetable Biryani</b></p>
+        <p>Rating: 4.0</p>
+        <p>Price: ₹70</p>
+        <button
+          onclick="addToCart('Vegetable Biryani', 70,'https://product-assets.faasos.io/eatsure/production/veg-biryani-online.jpeg')"
+        >
+          Add to Cart
+        </button>
+      </div>
+      <div class="card">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb3wHksTgwWy5DjcsQsxGTd55Am6-PpP1Uqg&s"
+          alt="Raita"
+        />
+        <p><b>Hyderabadi Raita</b></p>
+        <p>Rating: 4.1</p>
+        <p>Price: ₹30</p>
+        <button onclick="addToCart('Raita', 30,'')">Add to Cart</button>
+      </div>
     </div>
 
-    <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCykeGoz-nzx5yd1XFT1Vi1GYXas_WFLPyqA&s" alt="Paneer Tikka" />
-      <p><b>Paneer Tikka</b></p>
-      <p>Rating: 4.2</p>
-      <p>Price: ₹80</p>
-      <button onclick="addToCart('Paneer Tikka', 80)">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="https://i.ytimg.com/vi/7dLE0oraTF0/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBw9lgGUqANLQvwbgqtoKK-U1Cuig" alt="Mutton Biryani" />
-      <p><b>Hyderabadi Mutton Biryani</b></p>
-      <p>Rating: 4.7</p>
-      <p>Price: ₹120</p>
-      <button onclick="addToCart('Mutton Biryani', 120)">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="https://product-assets.faasos.io/eatsure/production/veg-biryani-online.jpeg" alt="Vegetable Biryani" />
-      <p><b>Hyderabadi Vegetable Biryani</b></p>
-      <p>Rating: 4.0</p>
-      <p>Price: ₹70</p>
-      <button onclick="addToCart('Vegetable Biryani', 70)">Add to Cart</button>
-    </div>
-    <div class="card">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb3wHksTgwWy5DjcsQsxGTd55Am6-PpP1Uqg&s" alt="Raita" />
-      <p><b>Hyderabadi Raita</b></p>
-      <p>Rating: 4.1</p>
-      <p>Price: ₹30</p>
-      <button onclick="addToCart('Raita', 30)">Add to Cart</button>
-    </div>
-
-  </div>
-
-  <script src="home.js"></script>
-   
-  
-
-</body>
+    <script src="home.js"></script>
+  </body>
 </html>

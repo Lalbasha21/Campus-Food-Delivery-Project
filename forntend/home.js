@@ -11,9 +11,8 @@ function logout() {
 }
 
 // Add item to cart
-function addToCart(itemName, price) {
+function addToCart(itemName, price, itemSrc) {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.push({ itemName, price });
+  cart.push({ itemName, price, itemSrc });
   localStorage.setItem("cart", JSON.stringify(cart));
-  
 }
